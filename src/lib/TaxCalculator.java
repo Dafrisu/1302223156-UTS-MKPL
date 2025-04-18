@@ -3,7 +3,7 @@ package lib;
 import java.time.LocalDate;
 
 public class TaxCalculator {
-    public int getAnnualIncomeTax(Employee employee) {
+    public int getAnnualIncomeTax(Employee employee, TaxInfo taxInfo) {
 
         // Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah
         // bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
@@ -16,10 +16,6 @@ public class TaxCalculator {
             employee.getEmployment().setMonthWorkingInYear(12);
         }
 
-        return TaxFunction.calculateTax(employee.getSalary().getMonthlySalary(),
-                employee.getSalary().getOtherMonthlyIncome(),
-                employee.getEmployment().getMonthWorkingInYear(),
-                employee.getSalary().getAnnualDeductible(), employee.getFamily().getSpouceID().equals(""),
-                employee.getFamily().getChildID().size());
+        return TaxFunction.calculateTax(taxInfo);
     }
 }
