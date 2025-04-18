@@ -1,5 +1,7 @@
 package lib;
 
+import java.util.Map;
+
 public class Salary {
     private int monthlySalary;
     private int otherMonthlyIncome;
@@ -25,24 +27,17 @@ public class Salary {
      * 7.000.000 per bulan)
      * Jika pegawai adalah warga negara asing gaji bulanan diperbesar sebanyak 50%
      */
-
     public void setMonthlySalary(int grade, boolean isForeigner) {
-        if (grade == 1) {
-            monthlySalary = 3000000;
-            if (isForeigner) {
-                monthlySalary = (int) (3000000 * 1.5);
-            }
-        } else if (grade == 2) {
-            monthlySalary = 5000000;
-            if (isForeigner) {
-                monthlySalary = (int) (3000000 * 1.5);
-            }
-        } else if (grade == 3) {
-            monthlySalary = 7000000;
-            if (isForeigner) {
-                monthlySalary = (int) (3000000 * 1.5);
-            }
+        Map<Integer, Integer> mapBaseSalary = Map.of(
+                1, 3000000,
+                2, 5000000,
+                3, 7000000);
+
+        int baseSalary = mapBaseSalary.getOrDefault(grade, 0);
+        if (isForeigner) {
+            baseSalary *= 1.5;
         }
+        this.monthlySalary = baseSalary;
     }
 
     public int getMonthlySalary() {
