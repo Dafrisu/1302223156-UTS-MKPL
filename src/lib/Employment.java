@@ -1,5 +1,7 @@
 package lib;
 
+import java.time.LocalDate;
+
 public class Employment {
     private int yearJoined;
     private int monthJoined;
@@ -31,5 +33,18 @@ public class Employment {
 
     public void setMonthWorkingInYear(int monthWorkingInYear) {
         this.monthWorkingInYear = monthWorkingInYear;
+    }
+
+    public void calculateMontohWorkingInYear() {
+
+        // Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah
+        // bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
+        LocalDate date = LocalDate.now();
+
+        if (date.getYear() == this.yearJoined) {
+            this.monthWorkingInYear = date.getMonthValue() - this.monthJoined;
+        } else {
+            this.monthWorkingInYear = 12;
+        }
     }
 }
