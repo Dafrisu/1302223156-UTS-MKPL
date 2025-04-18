@@ -7,10 +7,10 @@ public class EmployeeInformation {
     private String idNumber;
     private String address;
     private boolean isForeigner;
-    private boolean gender; // true = Laki-laki, false = Perempuan
+    private Gender gender;
 
     public EmployeeInformation(String employeeId, String firstName, String lastName, String idNumber, String address,
-            boolean isForeigner, boolean gender) {
+            boolean isForeigner, Gender gender) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -44,7 +44,7 @@ public class EmployeeInformation {
         return isForeigner;
     }
 
-    public boolean getGender() {
+    public Gender getGender() {
         return gender;
     }
 }
