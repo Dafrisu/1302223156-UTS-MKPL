@@ -1,7 +1,6 @@
 package lib;
 
 public class TaxFunction {
-
 	/**
 	 * Fungsi untuk menghitung jumlah pajak penghasilan pegawai yang harus
 	 * dibayarkan setahun.
@@ -19,27 +18,27 @@ public class TaxFunction {
 	 * 
 	 */
 
-	public static int calculateTax(int monthlySalary, int otherMonthlyIncome, int numberOfMonthWorking, int deductible,
-			boolean isMarried, int numberOfChildren) {
-
+	public static int calculateTax(TaxInfo taxInfo) {
+		int numberOfChildren = taxInfo.getNumberOfChildren();
 		int tax = 0;
 
-		if (numberOfMonthWorking > 12) {
+		if (taxInfo.getNumberOfMonthWorking() > 12) {
 			System.err.println("More than 12 month working per year");
 		}
 
-		if (numberOfChildren > 3) {
+		if (taxInfo.getNumberOfChildren() > 3) {
 			numberOfChildren = 3;
 		}
 
-		if (isMarried) {
-			tax = (int) Math.round(0.05 * (((monthlySalary + otherMonthlyIncome) * numberOfMonthWorking) - deductible
+		if (taxInfo.getIsMarried()) {
+			tax = (int) Math.round(0.05 * (((taxInfo.getMonthlySalary() + taxInfo.getOtherMonthlyIncome())
+					* taxInfo.getNumberOfMonthWorking()) - taxInfo.getAnnualDeductible()
 					- (54000000 + 4500000 + (numberOfChildren * 1500000))));
 		} else {
 			tax = (int) Math.round(
-					0.05 * (((monthlySalary + otherMonthlyIncome) * numberOfMonthWorking) - deductible - 54000000));
+					0.05 * (((taxInfo.getMonthlySalary() + taxInfo.getOtherMonthlyIncome())
+							* taxInfo.getNumberOfMonthWorking()) - taxInfo.getAnnualDeductible() - 54000000));
 		}
-
 		if (tax < 0) {
 			return 0;
 		} else {
