@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class TaxCalculator {
     public int getAnnualIncomeTax(Employment employment, TaxInfo taxInfo) {
 
-        employment.calculateMontohWorkingInYear();
+        employment.calculateMonthWorkingInYear();
         return TaxFunction.calculateTax(taxInfo);
     }
 }
