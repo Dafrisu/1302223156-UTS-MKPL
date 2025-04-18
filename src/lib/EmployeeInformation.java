@@ -2,20 +2,14 @@ package lib;
 
 public class EmployeeInformation {
     private String employeeId;
-    private String firstName;
-    private String lastName;
-    private String idNumber;
-    private String address;
+    private PersonalInformation personalInformation;
     private boolean isForeigner;
     private Gender gender;
 
-    public EmployeeInformation(String employeeId, String firstName, String lastName, String idNumber, String address,
+    public EmployeeInformation(String employeeId, PersonalInformation personalInformation,
             boolean isForeigner, Gender gender) {
         this.employeeId = employeeId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.idNumber = idNumber;
-        this.address = address;
+        this.personalInformation = personalInformation;
         this.isForeigner = isForeigner;
         this.gender = gender;
     }
@@ -24,27 +18,15 @@ public class EmployeeInformation {
         return employeeId;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getIdNumber() {
-        return idNumber;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
     public boolean isForeigner() {
         return isForeigner;
     }
 
     public Gender getGender() {
         return gender;
+    }
+
+    public PersonalInformation getPersonalInformation() {
+        return personalInformation;
     }
 }
